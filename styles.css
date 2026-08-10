@@ -1,0 +1,509 @@
+/* Tree & Ember — Living Library
+   A warm, editorial fantasy aesthetic: parchment ground, forest ink,
+   ember accent. Cinzel for engraved headings, Literata for reading copy. */
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Literata:ital,opsz,wght@0,18..144,400;0,18..144,500;0,18..144,600;1,18..144,400&display=swap');
+
+:root {
+  --parchment: #f4ecdb;
+  --parchment-deep: #ebe0c9;
+  --ink: #2a2620;
+  --ink-soft: #57503f;
+  --line: #d8c9a6;
+  --forest: #35513f;
+  --forest-deep: #263c2d;
+  --ember: #c1502e;
+  --ember-bright: #e2703f;
+  --gold: #a9822f;
+
+  --font-display: 'Cinzel', 'Iowan Old Style', Georgia, serif;
+  --font-body: 'Literata', Georgia, serif;
+
+  --shadow-card: 0 18px 40px -22px rgba(38, 32, 20, 0.45);
+  --radius: 3px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--parchment);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  background-image:
+    radial-gradient(circle at 12% 8%, rgba(193, 80, 46, 0.07), transparent 40%),
+    radial-gradient(circle at 88% 92%, rgba(53, 81, 63, 0.09), transparent 45%);
+}
+
+a {
+  color: inherit;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--forest-deep);
+  margin: 0;
+}
+
+/* ---------- Header ---------- */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: rgba(244, 236, 219, 0.88);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid var(--line);
+}
+
+.nav-shell {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 18px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  text-decoration: none;
+  color: var(--forest-deep);
+  letter-spacing: 0.06em;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.brand-mark {
+  color: var(--ember);
+  font-size: 1.2rem;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  font-size: 0.92rem;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--ink-soft);
+  border-bottom: 1px solid transparent;
+  padding-bottom: 2px;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.nav-links a:hover {
+  color: var(--ember);
+  border-color: var(--ember);
+}
+
+.nav-cta {
+  text-decoration: none;
+  color: var(--ink-soft);
+  font-size: 0.92rem;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 2px;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.nav-cta:hover {
+  color: var(--ember);
+  border-color: var(--ember);
+}
+
+/* ---------- Hero ---------- */
+
+.hero {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 88px 32px 96px;
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 56px;
+  align-items: end;
+}
+
+.hero-eyebrow {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--ember);
+  margin-bottom: 22px;
+}
+
+.hero h1 {
+  font-size: clamp(2.6rem, 5vw, 4.1rem);
+  line-height: 1.06;
+}
+
+.hero h1 em {
+  font-style: normal;
+  color: var(--ember);
+}
+
+.hero-lede {
+  margin-top: 26px;
+  max-width: 46ch;
+  font-size: 1.12rem;
+  color: var(--ink-soft);
+}
+
+.hero-aside {
+  border-left: 1px solid var(--line);
+  padding-left: 28px;
+  padding-bottom: 6px;
+}
+
+.hero-aside p {
+  font-style: italic;
+  color: var(--ink-soft);
+  font-size: 1.02rem;
+  margin: 0 0 14px;
+}
+
+.hero-aside cite {
+  display: block;
+  font-style: normal;
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  color: var(--forest);
+}
+
+/* ---------- Sections ---------- */
+
+.section {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 72px 32px;
+}
+
+.section-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 24px;
+  margin-bottom: 44px;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 20px;
+}
+
+.section-head h2 {
+  font-size: 1.7rem;
+}
+
+.section-head .section-tag {
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  white-space: nowrap;
+}
+
+.entries {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+}
+
+.entry {
+  background: var(--parchment);
+  padding: 30px 26px;
+  position: relative;
+}
+
+.entry:nth-child(2) {
+  background: var(--parchment-deep);
+}
+
+.entry-glyph {
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  color: var(--ember);
+  display: block;
+  margin-bottom: 14px;
+}
+
+.entry h3 {
+  font-size: 1.12rem;
+  margin-bottom: 10px;
+}
+
+.entry p {
+  color: var(--ink-soft);
+  font-size: 0.96rem;
+  margin: 0;
+}
+
+/* ---------- Journal card (shared with privacy page) ---------- */
+
+.journal-card {
+  background: var(--parchment-deep);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-card);
+  padding: 44px 48px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 44px;
+}
+
+.journal-card h1 {
+  font-size: 1.9rem;
+  margin-bottom: 18px;
+}
+
+.hero-note {
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+/* ---------- Signup form ---------- */
+
+.signup {
+  background: var(--forest-deep);
+  color: var(--parchment);
+  background-image: radial-gradient(circle at 85% 20%, rgba(226, 112, 63, 0.18), transparent 55%);
+}
+
+.signup .section-head {
+  border-color: rgba(244, 236, 219, 0.22);
+}
+
+.signup .section-head h2 {
+  color: var(--parchment);
+}
+
+.signup-body {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 48px;
+}
+
+.signup-copy p {
+  color: rgba(244, 236, 219, 0.78);
+  max-width: 40ch;
+}
+
+.signup-copy ul {
+  margin: 22px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.signup-copy li {
+  padding-left: 22px;
+  position: relative;
+  margin-bottom: 12px;
+  color: rgba(244, 236, 219, 0.86);
+  font-size: 0.95rem;
+}
+
+.signup-copy li::before {
+  content: '✦';
+  position: absolute;
+  left: 0;
+  color: var(--ember-bright);
+  font-size: 0.8rem;
+}
+
+form.founding-form {
+  display: grid;
+  gap: 16px;
+}
+
+.field {
+  display: grid;
+  gap: 6px;
+}
+
+.field label {
+  font-size: 0.82rem;
+  letter-spacing: 0.04em;
+  color: rgba(244, 236, 219, 0.72);
+}
+
+.field input,
+.field select {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  padding: 12px 14px;
+  background: rgba(244, 236, 219, 0.06);
+  border: 1px solid rgba(244, 236, 219, 0.28);
+  border-radius: var(--radius);
+  color: var(--parchment);
+}
+
+.field input::placeholder {
+  color: rgba(244, 236, 219, 0.4);
+}
+
+.field input:focus,
+.field select:focus {
+  outline: none;
+  border-color: var(--ember-bright);
+  background: rgba(244, 236, 219, 0.1);
+}
+
+.field select {
+  appearance: none;
+  background-image: linear-gradient(45deg, transparent 50%, rgba(244, 236, 219, 0.6) 50%), linear-gradient(135deg, rgba(244, 236, 219, 0.6) 50%, transparent 50%);
+  background-position: calc(100% - 18px) calc(50% - 3px), calc(100% - 13px) calc(50% - 3px);
+  background-size: 6px 6px;
+  background-repeat: no-repeat;
+}
+
+.honeypot {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.submit-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 4px;
+}
+
+.btn-ember {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--parchment);
+  background: var(--ember);
+  border: 1px solid var(--ember);
+  padding: 14px 30px;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: transform 0.15s ease, background 0.2s ease;
+}
+
+.btn-ember:hover {
+  background: var(--ember-bright);
+  border-color: var(--ember-bright);
+}
+
+.btn-ember:active {
+  transform: translateY(1px);
+}
+
+.btn-ember:disabled {
+  opacity: 0.55;
+  cursor: progress;
+}
+
+.form-status {
+  font-size: 0.88rem;
+  color: rgba(244, 236, 219, 0.75);
+  min-height: 1.2em;
+}
+
+.form-status[data-state='error'] {
+  color: #f0a98c;
+}
+
+.form-status[data-state='success'] {
+  color: #b9d6a7;
+}
+
+.privacy-note {
+  margin-top: 4px;
+  font-size: 0.8rem;
+  color: rgba(244, 236, 219, 0.5);
+}
+
+.privacy-note a {
+  color: rgba(244, 236, 219, 0.75);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* ---------- Footer ---------- */
+
+.site-footer {
+  border-top: 1px solid var(--line);
+  padding: 30px 32px 50px;
+}
+
+.footer-shell {
+  max-width: 1120px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+}
+
+.footer-shell a {
+  text-decoration: none;
+  border-bottom: 1px solid var(--line);
+}
+
+.footer-shell a:hover {
+  color: var(--ember);
+  border-color: var(--ember);
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 860px) {
+  .hero {
+    grid-template-columns: 1fr;
+    padding-top: 56px;
+  }
+
+  .hero-aside {
+    border-left: none;
+    border-top: 1px solid var(--line);
+    padding-left: 0;
+    padding-top: 24px;
+  }
+
+  .entries {
+    grid-template-columns: 1fr;
+  }
+
+  .journal-card,
+  .signup-body {
+    grid-template-columns: 1fr;
+    padding: 32px 26px;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .footer-shell {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+  }
+}
