@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tree & Ember — The Living Library</title>
+  <meta name="description" content="A world catalogued as it grows. Join the Founding Traveler List for Tree & Ember, a living library charting the Understory before its first public chapter.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%232a2620'/%3E%3Ctext x='16' y='23' font-size='20' text-anchor='middle' fill='%23c1502e'%3E%E2%9C%A6%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+</head>
+<body>
+  <header class="site-header">
+    <div class="nav-shell">
+      <a href="index.html" class="brand">
+        <span class="brand-mark">✦</span> Tree & Ember
+      </a>
+      <nav class="nav-links">
+        <a href="#entries">The Understory</a>
+        <a href="#signup">Founding Travelers</a>
+        <a href="privacy.html" class="nav-cta">Privacy</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div>
+        <span class="hero-eyebrow">A Living Library, Pre-Launch</span>
+        <h1>Charting a world that keeps <em>rewriting itself.</em></h1>
+        <p class="hero-lede">
+          Tree & Ember is a codex of the Understory — a wilderness of controlled-burn forests,
+          drowned market towns, and scribes who bind their memories into moths. We're cataloguing
+          it in public, one entry at a time, before the first chapter opens to readers.
+        </p>
+      </div>
+      <div class="hero-aside">
+        <p>"Nothing in the Understory is finished. Not the rivers, not the borders, not the book you're holding."</p>
+        <cite>— Working note, Cindergrove field journal</cite>
+      </div>
+    </section>
+
+    <section class="section" id="entries">
+      <div class="section-head">
+        <h2>Three threads already rooted</h2>
+        <span class="section-tag">Sample Entries</span>
+      </div>
+      <div class="entries">
+        <article class="entry">
+          <span class="entry-glyph">ENTRY NO. 04</span>
+          <h3>The Cindergrove Wardens</h3>
+          <p>
+            Rangers who set deliberate fires each Emberfall to keep the deep forest from choking
+            itself. They read smoke the way others read weather, and answer to no crown.
+          </p>
+        </article>
+        <article class="entry">
+          <span class="entry-glyph">ENTRY NO. 11</span>
+          <h3>The Hush Market of Aldertide</h3>
+          <p>
+            A trade town built on stilts over a flooded valley, where transactions are conducted
+            in whispers because the water carries sound for half a mile in every direction.
+          </p>
+        </article>
+        <article class="entry">
+          <span class="entry-glyph">ENTRY NO. 17</span>
+          <h3>The Moth-Bound Scribes</h3>
+          <p>
+            An order that transfers a dying elder's memory into the wing-dust of luna moths,
+            then releases them — the library's oldest volumes are still airborne.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section signup" id="signup">
+      <div class="section-head">
+        <h2>Join the Founding Traveler List</h2>
+        <span class="section-tag">37 travelers so far</span>
+      </div>
+      <div class="signup-body">
+        <div class="signup-copy">
+          <p>
+            Founding Travelers get new entries the week they're written, a say in which region
+            we map next, and their name inked into the library's first printed edition.
+          </p>
+          <ul>
+            <li>One dispatch a month, never more</li>
+            <li>Early reading access before public launch</li>
+            <li>No cost — this list funds nothing, it just gathers readers</li>
+          </ul>
+        </div>
+        <form
+          name="founding-travelers"
+          method="POST"
+          data-netlify="true"
+          netlify-honeypot="bot-field"
+          class="founding-form"
+          id="founding-form"
+        >
+          <input type="hidden" name="form-name" value="founding-travelers">
+          <p class="honeypot">
+            <label>Don't fill this out if you're human: <input name="bot-field"></label>
+          </p>
+          <div class="field">
+            <label for="traveler-name">Name</label>
+            <input type="text" id="traveler-name" name="name" placeholder="Marren Coeltide" required>
+          </div>
+          <div class="field">
+            <label for="traveler-email">Email</label>
+            <input type="email" id="traveler-email" name="email" placeholder="you@somewhere-real.com" required>
+          </div>
+          <div class="field">
+            <label for="traveler-interest">What draws you in?</label>
+            <select id="traveler-interest" name="interest">
+              <option value="cartography">Cartography & maps</option>
+              <option value="bestiary">Bestiary & creatures</option>
+              <option value="oral-history">Songs & oral history</option>
+              <option value="trade-factions">Trade & factions</option>
+            </select>
+          </div>
+          <div class="submit-row">
+            <button type="submit" class="btn-ember">Sign the ledger</button>
+            <span class="form-status" id="form-status" role="status" aria-live="polite"></span>
+          </div>
+          <p class="privacy-note">
+            We only use this to send updates. Details in the <a href="privacy.html">privacy policy</a>.
+          </p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-shell">
+      <span>© Tree & Ember. All rights reserved.</span>
+      <a href="privacy.html">Privacy Policy</a>
+    </div>
+  </footer>
+
+  <script>
+    const form = document.getElementById('founding-form');
+    const status = document.getElementById('form-status');
+    const button = form.querySelector('button[type="submit"]');
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      button.disabled = true;
+      status.dataset.state = 'pending';
+      status.textContent = 'Sending the ledger…';
+
+      try {
+        const response = await fetch('/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: new URLSearchParams(new FormData(form)).toString(),
+        });
+
+        if (!response.ok) {
+          throw new Error('Non-OK response');
+        }
+
+        status.dataset.state = 'success';
+        status.textContent = 'You\'re on the list — watch your inbox.';
+        form.reset();
+      } catch (err) {
+        status.dataset.state = 'error';
+        status.textContent = 'That didn\'t go through. Try again in a moment.';
+      } finally {
+        button.disabled = false;
+      }
+    });
+  </script>
+</body>
+</html>
