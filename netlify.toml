@@ -1,0 +1,12 @@
+[build]
+  command = "pnpm --filter @workspace/living-library... run build"
+  publish = "artifacts/living-library/dist"
+
+[build.environment]
+  PORT = "3000"
+  NODE_VERSION = "24.19.0"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
