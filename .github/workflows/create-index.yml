@@ -1,0 +1,37 @@
+name: Create index.html from Start
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch: {}
+
+jobs:
+  create-index:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+          fetch-depth: 0
+
+      - name: Ensure git user
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Create index.html from Start and commit if changed
+        run: |
+          if [ ! -f Start ]; then
+            echo "Start file not found; aborting"
+            exit 1
+          fi
+          cp Start index.html
+          git add index.html
+          # If there are no staged changes, exit
+          if git diff --cached --quiet; then
+            echo "No changes to index.html"
+            exit 0
+          fi
+          git commit -m "Make site deployable: add index.html (from Start) [skip ci]"
+          git push origin HEAD:main
